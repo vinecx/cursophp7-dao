@@ -30,8 +30,16 @@ echo "<br>";
 
 /// CARREGA UM USUARIO USANDO LOGIN E SENHA
 
+/////$usuario = new Usuario();
+/////$usuario->login("jose", "1.5.6.7");
+
+/////echo $usuario;
+
+////////////////////////////////////////////
+
 $usuario = new Usuario();
-$usuario->login("jose", "1.5.6.7");
+$usuario->loadById(3);
+$usuario->update("cacaca", "kkkkkk");
 
 echo $usuario;
 

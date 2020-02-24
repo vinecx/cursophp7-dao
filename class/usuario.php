@@ -34,9 +34,9 @@ class Usuario {
 	public function loadbyId($id){
 		$sql = new Sql();
 		$results = $sql->select("SELECT * FROM  tb_usuarios WHERE idusuario = :ID", array(":ID"=>$id));
+
 		if (count($results)>0){
-			$row = $results[0];
-			$this->setData($results)[0];
+			$this->setData($results[0]);
 		}
 	}
 
@@ -59,8 +59,7 @@ class Usuario {
 			":PASSWORD"=>$password
 		));
 		if (count($results)>0){
-			$row = $results[0];
-			$this->setData($results)[0];
+			$this->setData($results[0]);
 		} else {
 			throw new Exception("Login ou senha Inválidos");
 		}
@@ -89,6 +88,17 @@ class Usuario {
 			"deslogin"=>$this->getDeslogin(),
 			"dessenha"=>$this->getDessenha(),
 			"dtcadastro"=>$this->getDtcadastro()));
+	}
+	public function update($login, $password){
+		$this->setDeslogin($login);
+		$this->setDessenha($password);
+
+		$sql = new Sql();
+		$sql->query("UPDATE tb_usuarios SET  deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID ", array(
+			':LOGIN'=>$this->getDeslogin(),
+			':PASSWORD'=>$this->getDessenha(),
+			':ID'=>$this->getIdusuario()
+		));
 	}
 }
 
