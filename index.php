@@ -37,10 +37,18 @@ echo "<br>";
 
 ////////////////////////////////////////////
 
+//// alterar um usuario
+
+///$usuario = new Usuario();
+///$usuario->loadById(3);
+///$usuario->update("cacaca", "kkkkkk");
+
+///echo $usuario;
+
+///---------------------------/
 $usuario = new Usuario();
-$usuario->loadById(3);
-$usuario->update("cacaca", "kkkkkk");
+$usuario->loadbyId(1);
+$usuario->delete();
 
 echo $usuario;
-
 ?>
